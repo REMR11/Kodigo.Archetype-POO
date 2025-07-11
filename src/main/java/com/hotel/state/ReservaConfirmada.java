@@ -18,7 +18,7 @@ public class ReservaConfirmada implements ReservaState {
     }
 
     @Override
-    public void pendificar(Reserva reserva) {
+    public void pendificar(Reserva reserva) throws EstadoReservaInvalidoException {
         logAccionNoPermitida(reserva, "Pendificar (no se puede volver a pendiente desde confirmada)");
         throw new EstadoReservaInvalidoException("No se puede volver a estado 'Pendiente' desde 'Confirmada'.");
     }

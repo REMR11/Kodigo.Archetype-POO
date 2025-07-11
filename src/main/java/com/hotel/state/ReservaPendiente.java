@@ -1,10 +1,11 @@
+package com.hotel.state;
+
 import com.hotel.models.Reserva;
 import com.hotel.exceptions.ConfirmacionReservaException;
 
 public class ReservaPendiente implements ReservaState {
     @Override
     public void confirmar(Reserva reserva) throws ConfirmacionReservaException {
-        // Aquí podrías añadir más validaciones antes de confirmar
         if (reserva.getHabitacion().esDisponible()) {
             reserva.setEstado(new ReservaConfirmada());
             logEstadoCambio(reserva, obtenerNombreEstado(), "Confirmada");
@@ -22,7 +23,6 @@ public class ReservaPendiente implements ReservaState {
 
     @Override
     public void pendificar(Reserva reserva) {
-        // Ya está pendiente, no hace nada o lanza una excepción
         logAccionNoPermitida(reserva, "Pendificar (ya está en este estado)");
     }
 
