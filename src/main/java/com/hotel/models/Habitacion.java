@@ -2,16 +2,44 @@ package com.hotel.models;
 
 public class Habitacion {
     private String numero;
-    private String tipo;
-    private double precio;
+    private String tipo; // ej. "simple", "doble", "suite"
     private int capacidad;
+    private double precioBase;
     private boolean disponible;
 
-    public Habitacion(String numero, String tipo, double precio, int capacidad) {
+    public Habitacion(String numero, String tipo, int capacidad, double precioBase) {
         this.numero = numero;
         this.tipo = tipo;
-        this.precio = precio;
         this.capacidad = capacidad;
+        this.precioBase = precioBase;
+        this.disponible = true; // Por defecto, una habitación se crea disponible
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public double getPrecioBase() {
+        return precioBase;
+    }
+
+    public boolean esDisponible() {
+        return disponible;
+    }
+
+    public void reservar() {
+        this.disponible = false;
+    }
+
+    public void liberar() {
         this.disponible = true;
     }
 
@@ -20,49 +48,9 @@ public class Habitacion {
         return "Habitacion{" +
                 "numero='" + numero + '\'' +
                 ", tipo='" + tipo + '\'' +
-                ", precio=" + precio +
                 ", capacidad=" + capacidad +
+                ", precioBase=" + precioBase +
                 ", disponible=" + disponible +
                 '}';
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public int getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
-
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
     }
 }
