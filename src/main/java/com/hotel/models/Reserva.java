@@ -2,6 +2,7 @@ package com.hotel.models;
 import com.hotel.exceptions.ConfirmacionReservaException;
 import com.hotel.exceptions.PagoNoProcesadoException;
 import com.hotel.interfaces.Servicio;
+import com.hotel.state.ReservaPendiente;
 import com.hotel.state.ReservaState;
 import com.hotel.strategy.PagoStrategy;
 import com.hotel.strategy.PoliticaPrecio;
@@ -37,6 +38,10 @@ public class Reserva {
     public Reserva(String idReserva, Cliente cliente, Habitacion habitacion, LocalDate fechaLlegada, LocalDate fechaSalida) {
         this(cliente, habitacion, fechaLlegada, fechaSalida); // Llama al constructor principal
         this.idReserva = idReserva;
+    }
+
+    public Reserva(String idReserva, Habitacion habitacion, LocalDate fechaLlegada, LocalDate fechaSalida) {
+
     }
 
     public String getIdReserva() {

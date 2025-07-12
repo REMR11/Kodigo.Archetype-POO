@@ -16,23 +16,18 @@ public class ServicioFactory {
 
     public static Servicio crearServicio(TypeServices tipoServicio) throws ServicioNoDisponibleException {
         logger.info("Creando servicio de tipo: {}", tipoServicio);
-        switch (tipoServicio) {
-            case BASICO:
-                return new ServicioBasico("Servicio Básico de Habitacion", tipoServicio.getPrecio());
-            case DESAYUNO:
-                return new ServicioBasico("Desayuno", tipoServicio.getPrecio());
-            case TRANSPORTE:
-                return new ServicioBasico("Servicio de Transporte", tipoServicio.getPrecio());
-            case PARKING:
-                return new ServicioBasico("Parking", tipoServicio.getPrecio());
-            case SPA:
-                return new ServicioBasico("Acceso a Spa", tipoServicio.getPrecio());
-            case MASCOTA:
-                return new ServicioBasico("Permiso Mascota", tipoServicio.getPrecio());
-            default:
+        return switch (tipoServicio) {
+            case BASICO -> new ServicioBasico("Servicio Básico de Habitacion", tipoServicio.getPrecio());
+            case DESAYUNO -> new ServicioBasico("Desayuno", tipoServicio.getPrecio());
+            case TRANSPORTE -> new ServicioBasico("Servicio de Transporte", tipoServicio.getPrecio());
+            case PARKING -> new ServicioBasico("Parking", tipoServicio.getPrecio());
+            case SPA -> new ServicioBasico("Acceso a Spa", tipoServicio.getPrecio());
+            case MASCOTA -> new ServicioBasico("Permiso Mascota", tipoServicio.getPrecio());
+            default -> {
                 logger.error("Tipo de servicio no reconocido: {}", tipoServicio);
                 throw new ServicioNoDisponibleException("Servicio '" + tipoServicio + "' no disponible.");
-        }
+            }
+        };
     }
 
 
